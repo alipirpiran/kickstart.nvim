@@ -229,17 +229,6 @@ require('lazy').setup({
 
   require 'kickstart.plugins.gitsigns',
 
-  {
-    's1n7ax/nvim-window-picker',
-    name = 'window-picker',
-    event = 'VeryLazy',
-    version = '2.*',
-    config = function()
-      require('window-picker').setup {
-        hint = 'floating-big-letter',
-      }
-    end,
-  },
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
   -- This is often very useful to both group configuration, as well as handle
