@@ -35,7 +35,9 @@ return {
 
   opts = {
     filesystem = {
+      hijack_netrw_behavior = 'open_current',
       window = {
+        position = 'current',
         mappings = {
           ['sf'] = 'close_window',
           ['s'] = '',
