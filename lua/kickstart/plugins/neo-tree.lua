@@ -37,7 +37,7 @@ return {
     filesystem = {
       hijack_netrw_behavior = 'open_current',
       window = {
-        position = 'current',
+        -- position = 'current',
         mappings = {
           ['sf'] = 'close_window',
           ['s'] = '',
