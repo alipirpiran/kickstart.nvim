@@ -143,34 +143,7 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 
 -- [[ Basic Keymaps ]]
---  See `:help vim.keymap.set()`
-
--- Clear highlights on search when pressing <Esc> in normal mode
---  See `:help hlsearch`
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-
--- Diagnostic keymaps
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
-vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
-
---  See `:help wincmd` for a list of all window commands
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-
-vim.keymap.set('n', 'sh', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', 'sl', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', 'sj', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', 'sk', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-
--- Exit
-vim.keymap.set('i', 'kj', '<ESC>')
-vim.keymap.set('i', 'jk', '<ESC>')
-
--- Split
-vim.keymap.set('n', 'ss', ':split<Return>')
-vim.keymap.set('n', 'sv', ':vsplit<Return>')
+require 'custom.keymaps'
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -185,6 +158,22 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+
+-- Zoom / Restore window
+local function zoom_toggle()
+  if vim.t.zoomed then
+    vim.cmd(vim.t.zoom_winrestcmd)
+    vim.t.zoomed = false
+  else
+    vim.t.zoom_winrestcmd = vim.fn.winrestcmd()
+    vim.cmd 'resize'
+    vim.cmd 'vertical resize'
+    vim.t.zoomed = true
+  end
+end
+
+-- Create the command
+vim.api.nvim_create_user_command('ZoomToggle', zoom_toggle, {})
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
