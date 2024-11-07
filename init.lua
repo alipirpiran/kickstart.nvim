@@ -79,6 +79,8 @@ vim.g.maplocalleader = ','
 
 vim.g.have_nerd_font = true
 
+vim.o.exrc = true
+
 -- [[ Setting options ]]
 -- See `:help vim.opt`
 -- NOTE: You can change these options as you wish!
