@@ -11,7 +11,7 @@ return {
         if vim.b[bufnr].disable_autoformat then
           return
         end
-        require('conform').format { async = true, lsp_format = 'fallback', formatters = { 'prettier' } }
+        require('conform').format { async = true, lsp_format = 'fallback' }
       end,
       mode = '',
       desc = '[F]ormat buffer',
@@ -44,6 +44,7 @@ return {
       lua = { 'stylua' },
       -- Conform can also run multiple formatters sequentially
       python = { 'isort', 'black' },
+      sh = { 'beautysh' },
       --
       -- You can use 'stop_after_first' to run the first available formatter from the list
       javascript = { 'prettier', stop_after_first = true },
