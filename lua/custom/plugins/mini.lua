@@ -17,7 +17,7 @@ return { -- Collection of various small independent plugins/modules
     -- require('mini.surround').setup()
 
     local statusline = require 'mini.statusline'
-    statusline.setup { use_icons = vim.g.have_nerd_font }
+    -- statusline.setup { use_icons = vim.g.have_nerd_font }
 
     -- You can configure sections in the statusline by overriding their
     -- default behavior. For example, here we set the section for
