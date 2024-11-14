@@ -11,6 +11,10 @@ return {
         lualine_y = { 'location' },
         lualine_z = {},
       },
+      options = {
+        disabled_bufftypes = { 'quickfix', 'prompt', 'neo-tree' },
+        disabled_filetypes = { 'neo-tree' },
+      },
     }
   end,
 }
