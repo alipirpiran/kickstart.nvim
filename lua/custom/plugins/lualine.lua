@@ -3,6 +3,7 @@ return {
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
     require('lualine').setup {
+
       sections = {
         lualine_a = { 'mode' },
         lualine_b = { 'branch', 'diff', 'diagnostics' },
@@ -14,6 +15,7 @@ return {
       options = {
         disabled_bufftypes = { 'quickfix', 'prompt', 'neo-tree' },
         disabled_filetypes = { 'neo-tree' },
+        theme = 'catppuccin',
       },
     }
   end,
