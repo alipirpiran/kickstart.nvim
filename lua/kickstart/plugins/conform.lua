@@ -21,7 +21,7 @@ return {
     notify_on_error = false,
     format_on_save = function(bufnr)
       -- Check for buffer-local variable to disable formatting
-      if vim.b[bufnr].disable_autoformat then
+      if vim.b[bufnr].disable_autoformat or vim.g.disable_autoformat == 1 then
         return
       end
 
