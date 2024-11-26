@@ -48,8 +48,9 @@ vim.keymap.set('v', '<M-k>', ":m'<-2<CR>`>my`<mzgv`yo`z", { noremap = true, sile
 ---- TABS --------
 ------------------
 -- Use Tab/Shift-Tab for next/previous tab
-vim.keymap.set('n', '<Tab>', ':tabnext<CR>')
-vim.keymap.set('n', '<S-Tab>', ':tabprevious<CR>')
+-- vim.keymap.set('n', '<Tab>', ':tabnext<CR>')
+vim.keymap.set('n', 'tn', ':tabnext<CR>')
+vim.keymap.set('n', 'tp', ':tabprevious<CR>')
 -- Open new tab with 'te'
 vim.keymap.set('n', 'te', ':tabedit<CR>')
 -- Close current tab
