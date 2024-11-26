@@ -43,3 +43,30 @@ vim.keymap.set('n', '<M-k>', 'mz:m-2<CR>`z', { noremap = true, silent = true })
 -- Move lines up and down in visual mode
 vim.keymap.set('v', '<M-j>', ":m'>+<CR>`<my`>mzgv`yo`z", { noremap = true, silent = true })
 vim.keymap.set('v', '<M-k>', ":m'<-2<CR>`>my`<mzgv`yo`z", { noremap = true, silent = true })
+
+------------------
+---- TABS --------
+------------------
+-- Use Tab/Shift-Tab for next/previous tab
+vim.keymap.set('n', '<Tab>', ':tabnext<CR>')
+vim.keymap.set('n', '<S-Tab>', ':tabprevious<CR>')
+-- Open new tab with 'te'
+vim.keymap.set('n', 'te', ':tabedit<CR>')
+-- Close current tab
+vim.keymap.set('n', 'tc', ':tabclose<CR>')
+
+------------------
+---- Buffers -----
+------------------
+-- Close current buffer
+vim.keymap.set('n', '<leader>bd', ':bd<CR>')
+
+-- Navigate buffers
+vim.keymap.set('n', '<leader>bn', ':bnext<CR>')
+vim.keymap.set('n', '<leader>bp', ':bprevious<CR>')
+
+-- Close all buffers except current
+vim.keymap.set('n', '<leader>bo', ':%bd|e#|bd#<CR>')
+
+-- Close all buffers
+vim.keymap.set('n', '<leader>ba', ':%bd<CR>')
