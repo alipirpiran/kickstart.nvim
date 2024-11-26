@@ -350,6 +350,7 @@ require('lazy').setup({
   { 'sindrets/diffview.nvim' },
   -- { 'xiyaowong/transparent.nvim' },
   { import = 'custom.plugins' },
+  require 'plugins.auto-session',
   -- require 'custom.statusline',
 }, {
   ui = {
