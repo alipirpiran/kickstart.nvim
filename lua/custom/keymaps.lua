@@ -71,3 +71,6 @@ vim.keymap.set('n', '<leader>bo', ':%bd|e#|bd#<CR>')
 
 -- Close all buffers
 vim.keymap.set('n', '<leader>ba', ':%bd<CR>')
+
+-- Map Ctrl+Backspace to delete the previous word in insert mode
+vim.api.nvim_set_keymap('i', '<C-h>', '<C-w>', { noremap = true, silent = true })
