@@ -15,5 +15,6 @@ return {
     --   },
     -- },
     complete_function_calls = true,
+    -- filetypes = { 'typescript' },
   },
 }
