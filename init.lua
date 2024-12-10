@@ -359,7 +359,7 @@ require('lazy').setup({
       },
     },
   },
-  { 'xiyaowong/transparent.nvim' },
+  -- { 'xiyaowong/transparent.nvim' },
   { import = 'custom.plugins' },
   require 'plugins.auto-session',
   -- require 'custom.statusline',
