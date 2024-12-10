@@ -347,8 +347,19 @@ require('lazy').setup({
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-  { 'sindrets/diffview.nvim' },
-  -- { 'xiyaowong/transparent.nvim' },
+  {
+    'sindrets/diffview.nvim',
+    dependencies = { 'nvim-web-devicons' },
+    opts = {
+      use_icons = true,
+      view = {
+        default = {
+          layout = 'diff2_horizontal',
+        },
+      },
+    },
+  },
+  { 'xiyaowong/transparent.nvim' },
   { import = 'custom.plugins' },
   require 'plugins.auto-session',
   -- require 'custom.statusline',
