@@ -35,8 +35,8 @@ return {
       vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
       vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
       -- fold
-      vim.keymap.set('n', '<leader>zs', require('ufo').openAllFolds, { desc = '[s]hut all folds' })
-      vim.keymap.set('n', '<leader>zo', require('ufo').closeAllFolds, { desc = '[o]pen all [f]olds' })
+      vim.keymap.set('n', '<leader>zs', require('ufo').closeAllFolds, { desc = '[s]hut all folds' })
+      vim.keymap.set('n', '<leader>zo', require('ufo').openAllFolds, { desc = '[o]pen all [f]olds' })
 
       require('ufo').setup {
         provider_selector = function(bufnr, filetype, buftype)
