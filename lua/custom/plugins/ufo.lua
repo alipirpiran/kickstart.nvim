@@ -18,13 +18,6 @@ return {
         end,
       },
     },
-    event = 'BufReadPost',
-    opts = {
-      provider_selector = function()
-        return { 'treesitter', 'indent' }
-      end,
-    },
-
     config = function()
       vim.o.foldcolumn = '1' -- '0' is not bad
       vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
@@ -33,14 +26,17 @@ return {
       vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
       -- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
-      vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-      vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
       vim.keymap.set('n', 'zp', function()
         local winid = require('ufo').peekFoldedLinesUnderCursor()
         if not winid then
           vim.lsp.buf.hover()
         end
       end)
+      vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+      vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+      -- fold
+      vim.keymap.set('n', '<leader>zs', require('ufo').openAllFolds, { desc = '[s]hut all folds' })
+      vim.keymap.set('n', '<leader>zo', require('ufo').closeAllFolds, { desc = '[o]pen all [f]olds' })
 
       require('ufo').setup {
         provider_selector = function(bufnr, filetype, buftype)
