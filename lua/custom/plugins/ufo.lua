@@ -18,8 +18,6 @@ return {
         end,
       },
     },
-    -- event = 'BufReadPost',
-
     config = function()
       vim.o.foldcolumn = '1' -- '0' is not bad
       vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
@@ -34,20 +32,25 @@ return {
           vim.lsp.buf.hover()
         end
       end)
+      vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+      vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+      -- fold
+      vim.keymap.set('n', '<leader>zs', require('ufo').closeAllFolds, { desc = '[s]hut all folds' })
+      vim.keymap.set('n', '<leader>zo', require('ufo').openAllFolds, { desc = '[o]pen all [f]olds' })
 
       require('ufo').setup {
 
         provider_selector = function()
           return { 'treesitter', 'indent' }
         end,
-        -- close_fold_kinds = { 'imports', 'comment' },
-        --
       }
-
-      vim.keymap.set('n', '<leader>zs', require('ufo').closeAllFolds, { desc = '[s]hut all folds' })
-      vim.keymap.set('n', '<leader>zo', require('ufo').openAllFolds, { desc = '[o]pen all [f]olds' })
-      vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-      vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
     end,
   },
+  -- {
+  --   'anuvyklack/fold-preview.nvim',
+  --   dependencies = 'anuvyklack/keymap-amend.nvim',
+  --   config = function()
+  --     require('fold-preview').setup()
+  --   end,
+  -- },
 }

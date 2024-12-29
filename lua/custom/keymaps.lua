@@ -74,3 +74,13 @@ vim.keymap.set('n', '<leader>ba', ':%bd<CR>')
 
 -- Map Ctrl+Backspace to delete the previous word in insert mode
 vim.api.nvim_set_keymap('i', '<C-h>', '<C-w>', { noremap = true, silent = true })
+
+-- Add numbered vertical movements to jump list,
+-- allowing Ctrl+o to navigate through them
+vim.keymap.set('n', 'j', function()
+  return (vim.v.count > 0 and "m'" .. vim.v.count .. 'j' or 'j')
+end, { expr = true, silent = true })
+
+vim.keymap.set('n', 'k', function()
+  return (vim.v.count > 0 and "m'" .. vim.v.count .. 'k' or 'k')
+end, { expr = true, silent = true })
