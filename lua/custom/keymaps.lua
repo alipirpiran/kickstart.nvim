@@ -66,6 +66,9 @@ vim.keymap.set('n', '<leader>bd', ':bd<CR>')
 vim.keymap.set('n', '<leader>bn', ':bnext<CR>')
 vim.keymap.set('n', '<leader>bp', ':bprevious<CR>')
 
+vim.keymap.set('n', '<C-n>', ':bnext<CR>')
+vim.keymap.set('n', '<C-p>', ':bprevious<CR>')
+
 -- Close all buffers except current
 vim.keymap.set('n', '<leader>bo', ':%bd|e#|bd#<CR>')
 
