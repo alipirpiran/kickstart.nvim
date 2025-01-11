@@ -87,3 +87,9 @@ end, { expr = true, silent = true })
 vim.keymap.set('n', 'k', function()
   return (vim.v.count > 0 and "m'" .. vim.v.count .. 'k' or 'k')
 end, { expr = true, silent = true })
+
+-- Map Ctrl+j to move half page down
+vim.keymap.set('n', '<C-j>', '<C-d>', { noremap = true, silent = true })
+
+-- Map Ctrl+k to move half page up
+vim.keymap.set('n', '<C-k>', '<C-u>', { noremap = true, silent = true })
