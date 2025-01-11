@@ -24,6 +24,7 @@ vim.o.exrc = true
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
 vim.opt.relativenumber = true
+vim.opt.termbidi = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'

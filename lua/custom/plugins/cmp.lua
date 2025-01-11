@@ -5,19 +5,10 @@ return { -- Autocompletion
     -- Snippet Engine & its associated nvim-cmp source
     {
       'L3MON4D3/LuaSnip',
-      build = (function()
-        -- Build Step is needed for regex support in snippets.
-        -- This step is not supported in many windows environments.
-        -- Remove the below condition to re-enable on windows.
-        if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
-          return
-        end
-        return 'make install_jsregexp'
-      end)(),
+      tag = 'v2.*', -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+      -- install jsregexp (optional!:).
+      run = 'make install_jsregexp',
       dependencies = {
-        -- `friendly-snippets` contains a variety of premade snippets.
-        --    See the README about individual language/framework/plugin snippets:
-        --    https://github.com/rafamadriz/friendly-snippets
         {
           'rafamadriz/friendly-snippets',
           config = function()
@@ -27,36 +18,46 @@ return { -- Autocompletion
       },
     },
     'saadparwaiz1/cmp_luasnip',
-
-    -- Adds other completion capabilities.
-    --  nvim-cmp does not ship with all sources by default. They are split
-    --  into multiple repos for maintenance purposes.
+    'L3MON4D3/LuaSnip',
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-path',
+    'mlaursen/vim-react-snippets',
+    'onsails/lspkind.nvim',
   },
   config = function()
-    -- See `:help cmp`
+    require('vim-react-snippets').lazy_load()
+
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
+    local lspkind = require 'lspkind'
+
     luasnip.config.setup {}
 
     cmp.setup {
-      -- snippet = {
-      --   expand = function(args)
-      --     luasnip.lsp_expand(args.body)
-      --   end,
-      -- },
       completion = { completeopt = 'menu,menuone,noinsert' },
+      preselect = cmp.PreselectMode.None,
 
-      sorting = {
-        comparators = {
-          cmp.config.compare.offset,
-          cmp.config.compare.exact,
-          cmp.config.compare.score,
-          cmp.config.compare.kind,
-          -- cmp.config.compare.sort_text,
-          cmp.config.compare.length,
-          cmp.config.compare.order,
+      -- sorting = {
+      --   comparators = {
+      --     cmp.config.compare.offset,
+      --     cmp.config.compare.exact,
+      --     cmp.config.compare.score,
+      --     cmp.config.compare.kind,
+      --     -- cmp.config.compare.sort_text,
+      --     cmp.config.compare.length,
+      --     cmp.config.compare.order,
+      --   },
+      -- },
+      formatting = {
+        format = lspkind.cmp_format {
+          -- mode = 'symbol_text',
+          -- menu = {
+          --   buffer = '[Buffer]',
+          --   nvim_lsp = '[LSP]',
+          --   luasnip = '[LuaSnip]',
+          --   nvim_lua = '[Lua]',
+          --   latex_symbols = '[Latex]',
+          -- },
         },
       },
 
@@ -65,11 +66,6 @@ return { -- Autocompletion
       --
       -- No, but seriously. Please read `:help ins-completion`, it is really good!
       mapping = cmp.mapping.preset.insert {
-        -- Select the [n]ext item
-        ['<C-j>'] = cmp.mapping.select_next_item(),
-        -- Select the [p]revious item
-        ['<C-k>'] = cmp.mapping.select_prev_item(),
-
         -- Scroll the documentation window [b]ack / [f]orward
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -119,9 +115,26 @@ return { -- Autocompletion
           group_index = 0,
         },
         { name = 'nvim_lsp' },
-        -- { name = 'luasnip' },
+        { name = 'luasnip' },
         { name = 'path' },
       },
     }
+
+    -- gray
+    vim.api.nvim_set_hl(0, 'CmpItemAbbrDeprecated', { bg = 'NONE', strikethrough = true, fg = '#808080' })
+    -- blue
+    vim.api.nvim_set_hl(0, 'CmpItemAbbrMatch', { bg = 'NONE', fg = '#569CD6' })
+    vim.api.nvim_set_hl(0, 'CmpItemAbbrMatchFuzzy', { link = 'CmpIntemAbbrMatch' })
+    -- light blue
+    vim.api.nvim_set_hl(0, 'CmpItemKindVariable', { bg = 'NONE', fg = '#9CDCFE' })
+    vim.api.nvim_set_hl(0, 'CmpItemKindInterface', { link = 'CmpItemKindVariable' })
+    vim.api.nvim_set_hl(0, 'CmpItemKindText', { link = 'CmpItemKindVariable' })
+    -- pink
+    vim.api.nvim_set_hl(0, 'CmpItemKindFunction', { bg = 'NONE', fg = '#C586C0' })
+    vim.api.nvim_set_hl(0, 'CmpItemKindMethod', { link = 'CmpItemKindFunction' })
+    -- front
+    vim.api.nvim_set_hl(0, 'CmpItemKindKeyword', { bg = 'NONE', fg = '#D4D4D4' })
+    vim.api.nvim_set_hl(0, 'CmpItemKindProperty', { link = 'CmpItemKindKeyword' })
+    vim.api.nvim_set_hl(0, 'CmpItemKindUnit', { link = 'CmpItemKindKeyword' })
   end,
 }

@@ -51,6 +51,7 @@ return {
       typescript = { 'prettier', stop_after_first = true },
       typescriptreact = { 'prettier', stop_after_first = true },
       jsonc = { 'prettier', stop_after_first = true },
+      json = { 'prettier', stop_after_first = true },
     },
   },
 
