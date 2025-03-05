@@ -26,7 +26,7 @@ local bubbles_theme = {
   },
 }
 
-return {
+local mode1 = {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
@@ -95,3 +95,69 @@ return {
     }
   end,
 }
+local mode2 = {
+  'nvim-lualine/lualine.nvim',
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  config = function()
+    require('lualine').setup {
+      options = {
+        disabled_bufftypes = { 'quickfix', 'prompt', 'neo-tree' },
+        disabled_filetypes = { 'neo-tree' },
+        theme = 'catppuccin',
+        globalstatus = true,
+
+        section_separators = '',
+        component_separators = '',
+      },
+      -- sections = {
+      --   lualine_a = { 'mode' },
+      --   lualine_b = { 'branch', 'diff', 'diagnostics' },
+      --   lualine_c = { { 'filename', path = 1 } },
+      --   lualine_x = { 'encoding', 'fileformat', 'filetype' },
+      --   lualine_y = { 'location' },
+      --   lualine_z = {},
+      -- },
+      --
+      sections = {
+        lualine_a = { { 'mode', right_padding = 2 } },
+        lualine_b = { 'branch', 'diff', 'diagnostics' },
+        lualine_c = {
+          -- '%=',
+          { 'filename', path = 1 },
+        },
+        lualine_x = {},
+        lualine_y = { 'encoding', 'fileformat', 'filetype', 'progress' },
+        lualine_z = {
+          { 'location', left_padding = 2 },
+        },
+      },
+      tabline = {
+        lualine_a = { 'buffers' },
+        -- lualine_b = { 'branch' },
+        -- lualine_c = { 'filename' },
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = { 'tabs' },
+      },
+      -- winbar = {
+      --   lualine_a = {},
+      --   lualine_b = {},
+      --   lualine_c = { 'filename' },
+      --   lualine_x = {},
+      --   lualine_y = {},
+      --   lualine_z = {},
+      -- },
+      --
+      -- inactive_winbar = {
+      --   lualine_a = {},
+      --   lualine_b = {},
+      --   lualine_c = { 'filename' },
+      --   lualine_x = {},
+      --   lualine_y = {},
+      --   lualine_z = {},
+      -- },
+    }
+  end,
+}
+
+return mode2

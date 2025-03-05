@@ -57,9 +57,15 @@ local kanagawa_paper = {
   opts = {},
 }
 
+local onedarkpro = {
+  'olimorris/onedarkpro.nvim',
+  priority = 1000, -- Ensure it loads first
+}
+
 return {
   tokyonight,
   catppuccin,
   everforest,
   kanagawa_paper,
+  onedarkpro,
 }

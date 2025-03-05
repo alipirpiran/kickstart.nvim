@@ -321,3 +321,22 @@ require('lazy').setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+-- Set default colorscheme
+-- This function runs after all plugins are loaded
+local function set_colorscheme()
+  -- Choose your preferred colorscheme here
+  vim.cmd.colorscheme 'onedark_dark'
+
+  -- Uncomment one of these lines to change themes
+  -- vim.cmd.colorscheme 'everforest'
+  -- vim.cmd.colorscheme 'tokyonight'
+  -- vim.cmd.colorscheme 'kanagawa-paper'
+  -- vim.cmd.colorscheme 'onedark'
+
+  -- Optional: Set background
+  -- vim.o.background = 'dark' -- or 'light'
+end
+
+-- Call the function to set the colorscheme
+set_colorscheme()
