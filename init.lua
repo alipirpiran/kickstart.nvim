@@ -326,8 +326,12 @@ require('lazy').setup({
 -- This function runs after all plugins are loaded
 local function set_colorscheme()
   -- Choose your preferred colorscheme here
-  vim.cmd.colorscheme 'onedark_dark'
-
+  vim.cmd.colorscheme 'catppuccin'
+  -- vim.cmd [[highlight CursorLine guibg=#3A3A3A ctermbg=236]]
+  -- vim.cmd [[highlight Visual guibg=#264F78 guifg=NONE ctermbg=24 ctermfg=NONE]]
+  -- vim.cmd [[highlight CursorLine guibg=#4D4D60 ctermbg=239]]
+  -- vim.cmd [[highlight CursorLine guibg=#585B70 ctermbg=60]]
+  --
   -- Uncomment one of these lines to change themes
   -- vim.cmd.colorscheme 'everforest'
   -- vim.cmd.colorscheme 'tokyonight'
