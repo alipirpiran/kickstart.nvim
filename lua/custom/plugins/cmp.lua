@@ -5,7 +5,6 @@ return { -- Autocompletion
     -- Snippet Engine & its associated nvim-cmp source
     {
       'L3MON4D3/LuaSnip',
-      tag = 'v2.*', -- Replace <CurrentMajor> by the latest released major (first number of latest release)
       -- install jsregexp (optional!:).
       run = 'make install_jsregexp',
       dependencies = {
