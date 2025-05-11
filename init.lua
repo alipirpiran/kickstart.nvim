@@ -347,3 +347,5 @@ end
 
 -- Call the function to set the colorscheme
 set_colorscheme()
+
+vim.opt.laststatus = 3

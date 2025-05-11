@@ -132,6 +132,8 @@ return {
       -- },
       --
 
+      jsonls = {},
+      bashls = {},
       lua_ls = {
         -- cmd = {...},
         -- filetypes = { ...},
