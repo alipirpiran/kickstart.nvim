@@ -24,7 +24,7 @@ return { -- Autocompletion
     'onsails/lspkind.nvim',
   },
   config = function()
-    require('vim-react-snippets').lazy_load()
+    -- require('vim-react-snippets').lazy_load()
 
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
