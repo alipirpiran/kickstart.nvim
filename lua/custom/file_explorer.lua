@@ -67,6 +67,7 @@ return {
           mappings = {
             ['sf'] = 'close_window',
             ['s'] = '',
+            ['t'] = '',
             ['tf'] = 'telescope_find',
             ['tg'] = 'telescope_grep',
           },
