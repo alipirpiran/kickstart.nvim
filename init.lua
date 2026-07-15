@@ -293,9 +293,6 @@ require('lazy').setup({
       },
     },
   },
-  {
-    'github/copilot.vim',
-  },
   -- { 'xiyaowong/transparent.nvim' },
   { import = 'custom.plugins' },
   require 'plugins.auto-session',
